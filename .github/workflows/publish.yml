@@ -17,14 +17,14 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
 
           script: |
-            git clone git@github.com:ryancheley/ryancheley.com.git
+            git clone git@github.com:ryancheley/cvscienceshakers.com.git
 
-            source /home/ryancheley/venv/bin/activate
+            source /home/cvscienceshakers/venv/bin/activate
 
-            cp -r ryancheley.com/* .
+            cp -r cvscienceshakers.com/* .
 
-            pip install -r requirements.txt
+            pip install .
 
             pelican content -s publishconf.py
 
-            rm -rf ryancheley.com/
+            rm -rf cvscienceshakers.com/
