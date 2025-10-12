@@ -69,5 +69,4 @@ MENUITEMS = [
         ]),
         ("Measuring Earthquakes", "/pages/measuring-earthquakes"),
     ]),
-    ("Earthquake Preparedness", "/pages/earthquake-preparedness"),
 ]
