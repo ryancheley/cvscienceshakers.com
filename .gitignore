@@ -1,0 +1,70 @@
+# Pelican output directory
+output/
+*.pid
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Pelican
+.cache/
+pelican.pid
+srv.pid
+
+# Logs
+*.log
+pip-log.txt
+
+# Local configuration
+pelicanconf_local.py
+publishconf_local.py
+
+# Backup files
+*.bak
+*~
+
+# Temporary files
+*.tmp
+.tmp/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+.claude/
+nginx.conf
+content/videos/

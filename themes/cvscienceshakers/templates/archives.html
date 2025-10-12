@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Archives - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div id="archives-wrap" class="hgrid-stretch">
+
+    <main id="content" class="content no-sidebar layout-none" role="main">
+
+        <div class="hgrid main-content-grid">
+            <div class="content hgrid-span-12 no-sidebar layout-full-width">
+                <div id="content-wrap">
+
+                    <header class="page-header">
+                        <h1 class="page-title">Archives</h1>
+                    </header>
+
+                    <div class="archives-list">
+                        {% for article in dates %}
+                        <article class="archive-item">
+                            <time class="published" datetime="{{ article.date.isoformat() }}">
+                                {{ article.locale_date }}
+                            </time>
+                            <h2 class="entry-title">
+                                <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+                            </h2>
+                            {% if article.summary %}
+                            <div class="entry-summary">
+                                {{ article.summary }}
+                            </div>
+                            {% endif %}
+                        </article>
+                        {% endfor %}
+                    </div>
+
+                </div><!-- #content-wrap -->
+            </div><!-- #content -->
+        </div><!-- .main-content-grid -->
+
+    </main><!-- #content -->
+
+</div><!-- .hgrid -->
+{% endblock %}

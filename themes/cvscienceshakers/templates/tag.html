@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Tag: {{ tag }} - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div id="tag-wrap" class="hgrid-stretch">
+
+    <main id="content" class="content no-sidebar layout-none" role="main">
+
+        <div class="hgrid main-content-grid">
+            <div class="content hgrid-span-12 no-sidebar layout-full-width">
+                <div id="content-wrap">
+
+                    <header class="page-header">
+                        <h1 class="page-title">Tag: {{ tag }}</h1>
+                    </header>
+
+                    <div class="articles-list">
+                        {% for article in articles %}
+                        <article class="article-item">
+                            <header class="entry-header">
+                                <h2 class="entry-title">
+                                    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">{{ article.title }}</a>
+                                </h2>
+                                <div class="entry-meta">
+                                    <time class="published" datetime="{{ article.date.isoformat() }}">
+                                        {{ article.locale_date }}
+                                    </time>
+                                    {% if article.author %}
+                                    <span class="byline">by <span class="author">{{ article.author }}</span></span>
+                                    {% endif %}
+                                </div>
+                            </header>
+                            {% if article.summary %}
+                            <div class="entry-summary">
+                                {{ article.summary }}
+                            </div>
+                            {% endif %}
+                            <footer class="entry-footer">
+                                <a href="{{ SITEURL }}/{{ article.url }}" class="more-link">
+                                    <span>Read More</span>
+                                </a>
+                            </footer>
+                        </article>
+                        {% endfor %}
+                    </div>
+
+                </div><!-- #content-wrap -->
+            </div><!-- #content -->
+        </div><!-- .main-content-grid -->
+
+    </main><!-- #content -->
+
+</div><!-- .hgrid -->
+{% endblock %}

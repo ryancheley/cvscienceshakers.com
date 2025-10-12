@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}{{ SITENAME }}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{% block description %}{{ SITESUBTITLE }}{% endblock %}" />
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700|Oswald:400|Open+Sans:300,400,400i,500,600,700,700i,800&subset=latin" />
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/block-library.min.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/font-awesome.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/lightSlider.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/gallery.min.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main-style.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/wpblocks.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/earthquakemonitor.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/inline-styles.css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/nested-dropdown.css" />
+
+    <!-- Custom Styles -->
+    <style>
+        .hgrid {
+            max-width: 1380px;
+        }
+        a, .widget .view-all a:hover {
+            color: #d1ca14;
+        }
+        a:hover {
+            color: #9d970f;
+        }
+        .accent-typo, .cat-label {
+            background: #d1ca14;
+            color: #ffffff;
+        }
+        body {
+            background-color: #f7f7f7;
+            background-repeat: no-repeat;
+            background-position: top right;
+            background-attachment: scroll;
+            border-color: #d1ca14;
+        }
+        #topbar, #main.main, #header-supplementary, .sub-footer {
+            background: #ffffff;
+        }
+        #site-title {
+            text-transform: uppercase;
+        }
+        .site-title-line b, .site-title-line em, .site-title-line strong {
+            color: #d1ca14;
+        }
+        .menu-items > li.current-menu-item:not(.nohighlight) > a,
+        .menu-items > li.current-menu-ancestor > a,
+        .menu-items > li:hover > a,
+        .sf-menu ul li:hover > a,
+        .sf-menu ul li.current-menu-ancestor > a,
+        .sf-menu ul li.current-menu-item:not(.nohighlight) > a {
+            color: #d1ca14;
+        }
+        input[type="submit"], #submit, .button {
+            background: #d1ca14;
+            color: #ffffff;
+        }
+        input[type="submit"]:hover, #submit:hover, .button:hover {
+            background: #9d970f;
+            color: #ffffff;
+        }
+    </style>
+
+    {% if FEED_ALL_ATOM %}
+    <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+    {% endif %}
+    {% if FEED_ALL_RSS %}
+    <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+    {% endif %}
+</head>
+
+<body class="wordpress ltr en en-us maghoot">
+    <a href="#main" class="screen-reader-text">Skip to content</a>
+
+    <div id="page-wrapper" class="site-stretch page-wrapper sitewrap-full-width sidebars0">
+
+        <!-- Header -->
+        <header id="header" class="site-header header-layout-primary-widget-area header-layout-secondary-bottom" role="banner">
+
+            <div id="header-primary" class="header-part header-primary-widget-area">
+                <div class="hgrid">
+                    <div class="table hgrid-span-12">
+                        <div id="branding" class="site-branding branding table-cell-mid">
+                            <div id="site-logo" class="site-logo-text">
+                                <div id="site-logo-text" class="site-logo-text-medium">
+                                    <h1 id="site-title" class="site-title">
+                                        <a href="{{ SITEURL }}" rel="home">
+                                            <span class="blogname">{{ SITENAME }}</span>
+                                        </a>
+                                    </h1>
+                                    {% if SITESUBTITLE %}
+                                    <h2 class="site-description" id="site-description">{{ SITESUBTITLE }}</h2>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="header-aside" class="header-aside table-cell-mid header-aside-widget-area"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <div id="header-supplementary" class="header-part header-supplementary-bottom header-supplementary-left menu-side-none">
+                <div class="hgrid">
+                    <div class="hgrid-span-12">
+                        <div class="menu-nav-box">
+                            <div class="screen-reader-text">Navigation Menu</div>
+                            <nav id="menu-secondary" class="menu menu-secondary nav-menu mobilemenu-inline mobilesubmenu-click" role="navigation">
+                                <a class="menu-toggle" href="#"><span class="menu-toggle-text">Menu</span><i class="fas fa-bars"></i></a>
+
+                                <ul id="menu-secondary-items" class="menu-items sf-menu menu menu-highlight">
+                                    <li class="menu-item"><a href="{{ SITEURL }}"><span class="menu-title">Home</span></a></li>
+                    {% if MENUITEMS %}
+                        {% for item in MENUITEMS %}
+                            {% if item|length == 2 %}
+                                {# Simple menu item: (title, url) #}
+                                <li class="menu-item">
+                                    <a href="{{ item[1] }}">
+                                        <span class="menu-title">{{ item[0] }}</span>
+                                    </a>
+                                </li>
+                            {% elif item|length == 3 %}
+                                {# Dropdown menu item: (title, url, children) #}
+                                <li class="menu-item dropdown">
+                                    <a href="{{ item[1] }}" class="dropbtn">
+                                        <span class="menu-title">{{ item[0] }} ▾</span>
+                                    </a>
+                                    <ul class="dropdown-content">
+                                        {% for child in item[2] %}
+                                            {% if child|length == 2 %}
+                                                {# Simple child menu item #}
+                                                <li><a href="{{ child[1] }}">{{ child[0] }}</a></li>
+                                            {% elif child|length == 3 %}
+                                                {# Nested dropdown menu item #}
+                                                <li class="dropdown-nested">
+                                                    <a href="{{ child[1] }}">{{ child[0] }} ▾</a>
+                                                    <ul class="dropdown-content-nested">
+                                                        {% for subchild in child[2] %}
+                                                            <li><a href="{{ subchild[1] }}">{{ subchild[0] }}</a></li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {# Fallback to pages if MENUITEMS not defined #}
+                        {% for page in pages %}
+                            <li class="menu-item">
+                                <a href="{{ SITEURL }}/{{ page.url }}">
+                                    <span class="menu-title">{{ page.title }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- Main Content -->
+        <div id="main" class="main">
+            {% block content %}{% endblock %}
+        </div>
+
+        <!-- Footer -->
+        <div id="post-footer" class="post-footer hgrid-stretch footer-highlight-typo linkstyle">
+            <div class="hgrid">
+                <div class="hgrid-span-12">
+                    <p class="credit small">
+                        Designed using <a class="theme-link" href="https://wphoot.com/themes/magazine-hoot/" title="Magazine Hoot WordPress Theme">Magazine Hoot</a>.
+                        Powered by <a class="wp-link" href="https://getpelican.com">Pelican</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- #page-wrapper -->
+
+</body>
+</html>

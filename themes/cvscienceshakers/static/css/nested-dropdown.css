@@ -1,0 +1,50 @@
+/* Nested Dropdown Menu Styles */
+
+/* Position nested dropdown relative to parent */
+.dropdown-nested {
+    position: relative;
+}
+
+/* Hide nested dropdown by default */
+.dropdown-content-nested {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 200px;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Show nested dropdown on hover */
+.dropdown-nested:hover .dropdown-content-nested {
+    display: block;
+}
+
+/* Style nested dropdown links */
+.dropdown-content-nested li {
+    list-style: none;
+}
+
+.dropdown-content-nested li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.dropdown-content-nested li a:hover {
+    background-color: #f1f1f1;
+    color: #d1ca14;
+}
+
+/* Add arrow indicator for nested menu */
+.dropdown-nested > a::after {
+    content: ' ▸';
+    float: right;
+}

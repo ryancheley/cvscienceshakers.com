@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}{% endblock %}
+
+{% block content %}
+<div id="frontpage-wrap" class="hgrid-stretch">
+
+    <main id="content" class="content no-sidebar layout-none content-frontpage" role="main">
+
+        <!-- Featured Content (if any) -->
+        <div id="frontpage-page-content" class="frontpage-area frontpage-pagecontent frontpage-staticpage-content module-bg-none">
+
+            <div class="hgrid main-content-grid">
+                <div id="content-staticpage" class="content hgrid-span-12 no-sidebar layout-full-width">
+                    <div id="content-wrap">
+
+                        <!-- Homepage Intro -->
+                        <article class="entry">
+                            <div class="entry-content">
+                                <div class="entry-the-content">
+                                    <h1 style="text-align: center;">Are you interested in why the earth shakes?</h1>
+                                    <p style="text-align: center;">
+                                        The Coachella Valley Science Shakers website is a student-led project that explains features
+                                        of the Coachella Valley and seismic activity. It also features information on plate tectonics,
+                                        seismic evidence, and natural hazards. We provide examples about the natural hazards that
+                                        threaten the Coachella Valley communities. This website highlights student projects, research,
+                                        community education, and field study videos.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div><!-- #content-wrap -->
+                </div><!-- #content -->
+            </div><!-- .main-content-grid -->
+        </div>
+
+    </main><!-- #content -->
+
+</div><!-- .hgrid -->
+{% endblock %}
