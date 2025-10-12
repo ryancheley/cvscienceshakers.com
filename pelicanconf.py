@@ -56,7 +56,7 @@ MENUITEMS = [
         ('Seismic Activity', '/pages/seismic-activity'),
         ('Alluvial Fans', '/pages/alluvial-fans'),
     ]),    
-    ("The San Andreas Fault", "/pages/san-andreas-fault", [
+    ("The San Andreas Fault", "/pages/the-san-andreas-fault", [
         ("Seismic Activity", "/pages/san-andreas-seismic-activity"),
         ("Aquifers", "/pages/san-andreas-aquifers"),
     ]),
