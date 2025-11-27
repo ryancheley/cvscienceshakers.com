@@ -2,15 +2,11 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# Copy requirements first for better caching
-COPY requirements.txt* pyproject.toml* ./
+# Copy dependency files
+COPY pyproject.toml ./
 
-# Install dependencies
-RUN if [ -f requirements.txt ]; then \
-        pip install --no-cache-dir -r requirements.txt; \
-    elif [ -f pyproject.toml ]; then \
-        pip install --no-cache-dir .; \
-    fi
+# Install dependencies (including pelican and any other dependencies from pyproject.toml)
+RUN pip install --no-cache-dir .
 
 # Copy the rest of the application
 COPY . .
@@ -19,4 +15,5 @@ COPY . .
 RUN pelican content -s publishconf.py
 
 # Serve the static files
+EXPOSE 8000
 CMD ["python", "-m", "http.server", "8000", "--directory", "output"]
