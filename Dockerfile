@@ -14,6 +14,6 @@ COPY . .
 # Generate the static site
 RUN pelican content -s publishconf.py
 
-# Serve the static files on port 3000 (Coolify's default)
+# Serve the static files on port 3000, listening on all interfaces
 EXPOSE 3000
-CMD ["python", "-m", "http.server", "3000", "--directory", "output"]
+CMD ["python", "-m", "http.server", "3000", "--bind", "0.0.0.0", "--directory", "output"]
